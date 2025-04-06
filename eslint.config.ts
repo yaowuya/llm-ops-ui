@@ -12,17 +12,29 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    files: ['**/*.{ts,mts,tsx,vue}']
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  
+
   {
     ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
+    files: ['src/**/__tests__/*']
   },
   skipFormatting,
+  // 添加 vue/block-lang 规则配置
+  {
+    rules: {
+      'vue/block-lang': ['error', {
+        script: {
+          lang: 'ts', // 允许的语言类型（根据你的项目调整，如 'js'）
+          allowNoLang: false // 是否允许不指定 lang 属性（设为 false 表示强制要求）
+        }
+      }],
+      '@typescript-eslint/no-explicit-any': 'off'
+    }
+  }
 )

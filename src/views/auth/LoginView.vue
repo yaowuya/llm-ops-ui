@@ -1,8 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <router-view />
+  <p>这是授权登录页面</p>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
