@@ -85,6 +85,24 @@ const send = async () => {
             >
               <icon-apps />
             </a-avatar>
+            <!-- 实际消息 -->
+            <div class="flex flex-col gap-2">
+              <div class="font-semibold text-gray-700">
+                {{ message.role === 'human' ? '慕小课' : 'ChatGPT聊天机器人' }}
+              </div>
+              <div
+                v-if="message.role === 'human'"
+                class="max-w-max bg-blue-700 text-white border border-blue-800 px-4 py-3 rounded-2xl leading-5"
+              >
+                {{ message.content }}
+              </div>
+              <div
+                v-else
+                class="max-w-max bg-gray-100 text-gray-900 border border-gray-200 px-4 py-3 rounded-2xl leading-5"
+              >
+                {{ message.content }}
+              </div>
+            </div>
           </div>
           <!-- 没有数据时 -->
           <div
